@@ -1,5 +1,4 @@
 const allPaths = require("./allPaths");
-const prop = k => o => o[k];
 
 test("returns a single null path list for an empty tree", () => {
   expect(
@@ -31,3 +30,19 @@ test("finds two paths for a simple fork", () => {
     ["0", "B"]
   ]);
 });
+
+test("handles dead ends at different depths", () => {
+  const tree = { id: "0", edges: [
+    { id: "A", edges: [
+      { id: "I", edges: [] },
+      { id: "II", edges: [] }
+    ] },
+    { id: "B", edges: [] }
+  ]};
+
+  expect(allPaths(tree)).toEqual([
+    ["0", "A", "I"],
+    ["0", "A", "II"],
+    ["0", "B"]
+  ]);
+})

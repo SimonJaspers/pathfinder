@@ -1,6 +1,10 @@
 const allPaths = ({ id, edges }, path = [], paths = []) =>
-  edges.length
-    ? allPaths(edges[0], path.concat(id), paths)
-    : paths.concat([path.concat(id)]);
+  !edges.length
+    ? [...paths, path.concat(id)]
+    : edges.reduce(
+        (ps, e) => 
+          allPaths(e, path.concat(id), ps),
+        paths
+    );
 
 module.exports = allPaths;

@@ -16,4 +16,3 @@ Not certain. Will try to find out along the way by writing tests first. Probably
 ## Questions
 
 - Brute forcing it might run in to performance issues; can we close of parts of the trees when the score gets too low?
--
